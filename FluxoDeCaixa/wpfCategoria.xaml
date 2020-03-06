@@ -1,0 +1,33 @@
+﻿<Window x:Name="wpfCategoria1" x:Class="FluxoDeCaixa.wpfCategoria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FluxoDeCaixa"
+        mc:Ignorable="d"
+        Title="Categoria" Height="342.133" Width="369.062" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize" Loaded="wpfCategoria1_Loaded" Background="#FFC6E8FF">
+    <Grid>
+        <Label Content="Descrição" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDescricao" Height="23" Margin="10,36,103,0" TextWrapping="Wrap" VerticalAlignment="Top" CharacterCasing="Upper" BorderBrush="#FFA8A8A8"/>
+        <GroupBox x:Name="gbOpcao" Header="Opções - Tipo" Margin="10,64,195,0" Height="60" VerticalAlignment="Top">
+            <Grid x:Name="GridOpcoesTipo">
+                <RadioButton x:Name="RbEntrada" Content="Entrada" Margin="0,1,0,0" GroupName="1" IsChecked="True" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="72"/>
+                <RadioButton x:Name="RbSaida" Content="Saida" Margin="77,4,0,0" GroupName="1" HorizontalAlignment="Left" Width="48" Height="15" VerticalAlignment="Top" UseLayoutRounding="False"/>
+                <RadioButton x:Name="RbFixo" Content="Fixo" Margin="0,21,0,0" GroupName="2" IsChecked="True" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+                <RadioButton x:Name="RbVariavel" Content="Variavel" Margin="77,21,0,0" GroupName="2" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid x:Name="DgCategoria" Margin="10,146,13,10" IsReadOnly="True" GridLinesVisibility="None" AutoGenerateColumns="False" AlternatingRowBackground="#FFC6E8FF" AlternationCount="2" MouseDoubleClick="DgCategoria_MouseDoubleClick" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="DtcId" Header="Id" Binding="{Binding Path= Id}"/>
+                <DataGridTextColumn x:Name="DtcDescricao" Header="Descrição" Binding="{Binding Path= Descricao}"/>
+                <DataGridTextColumn x:Name="DtcTipo1" Header="Tipo 1" Binding="{Binding Path= Tipo1}"/>
+                <DataGridTextColumn x:Name="DtcTipo2" Header="Tipo 2" Binding="{Binding Path= Tipo2}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnGravar" Content="Gravar" Margin="273,21,13,0" VerticalAlignment="Top" Click="BtnGravar_Click" BorderBrush="White"/>
+        <Button x:Name="BtnAlterar" Content="Alterar" Margin="273,46,13,0" VerticalAlignment="Top" Click="BtnAlterar_Click" BorderBrush="White" IsEnabled="False"/>
+        <Button x:Name="BtnExcluir" Content="Excluir" Margin="273,71,13,0" VerticalAlignment="Top" Click="BtnExcluir_Click" BorderBrush="White" IsEnabled="False"/>
+
+    </Grid>
+</Window>

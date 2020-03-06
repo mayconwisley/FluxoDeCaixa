@@ -1,0 +1,44 @@
+﻿<Window x:Name="WpfMovimentacao1" x:Class="FluxoDeCaixa.WpfMovimentacao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FluxoDeCaixa"
+        mc:Ignorable="d"
+        Title="Movimentação" Height="444" Width="411" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FFC6E8FF" Loaded="WpfMovimentacao1_Loaded" ShowInTaskbar="False">
+    <Grid>
+        <Label Content="Data Movimentação" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DpDataMovimentacao" Margin="10,36,257,0" Height="24" VerticalAlignment="Top" FirstDayOfWeek="Monday"/>
+        <Label Content="Categoria" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="65"/>
+        <ComboBox x:Name="CbxCategoria" Margin="10,91,115,0" Height="22" VerticalAlignment="Top" SelectionChanged="CbxCategoria_SelectionChanged" SelectedIndex="0" SelectedValuePath="Descricao">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock x:Name="TxtDescCategoria" Text="{Binding Path= Descricao}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="LblInformacao" Content="Info:..." HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
+        <Label Content="Descrição" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtDescricao" Margin="10,175,115,0" TextWrapping="Wrap" CharacterCasing="Upper" Height="23" VerticalAlignment="Top"/>
+        <Label Content="Valor" HorizontalAlignment="Left" Margin="293,149,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtValor" Margin="293,175,39,0" TextWrapping="Wrap" Text="0,00" Height="23" VerticalAlignment="Top" TextAlignment="Right" GotFocus="TxtValor_GotFocus" LostFocus="TxtValor_LostFocus" TextChanged="TxtValor_TextChanged"/>
+        <Button x:Name="BtnGravar" Content="Gravar" Margin="315,21,13,0" Height="20" VerticalAlignment="Top" Click="BtnGravar_Click"/>
+        <Button x:Name="BtnAlterar" Content="Alterar" Margin="315,46,13,0" Height="20" VerticalAlignment="Top" Click="BtnAlterar_Click" IsEnabled="False"/>
+        <Button x:Name="BtnExcluir" Content="Excluir" Margin="315,71,13,0" Height="20" VerticalAlignment="Top" Click="BtnExcluir_Click" IsEnabled="False"/>
+        <DataGrid x:Name="DgMovimentacao" Margin="10,227,13,0" Height="144" VerticalAlignment="Top" IsReadOnly="True" MouseDoubleClick="DgMovimentacao_MouseDoubleClick" AutoGenerateColumns="False" AlternatingRowBackground="#FFC6E8FF" AllowDrop="True" AlternationCount="2" GridLinesVisibility="None">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="DtcId" Header="Id" Binding="{Binding Path= Id}" Visibility="Hidden" />
+                <DataGridTextColumn x:Name="DtcDataMovimentacao" Header="Data Movimentação" Binding="{Binding Path= Data_Movimentacao, StringFormat=dd/MM/yyyy}" HeaderStringFormat=""/>
+                <DataGridTextColumn x:Name="DtcDescricao" Header="Descrição" Binding="{Binding Path= Movimento}"/>
+                <DataGridTextColumn x:Name="DtcValor" Header="Valor" Binding="{Binding Path= Valor, StringFormat=N2}"/>
+                <DataGridTextColumn x:Name="DtcCategoria" Header="Categoria" Binding="{Binding Path= Categoria}" />
+                <DataGridTextColumn x:Name="DtcTipo1" Header="Tipo 1" Binding="{Binding Path= Tipo1}"/>
+                <DataGridTextColumn x:Name="DtcTipo2" Header="Tipo 2" Binding="{Binding Path= Tipo2}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="LblInformacao1" Content="Info..." Margin="10,371,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+    </Grid>
+</Window>
